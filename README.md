@@ -7,6 +7,8 @@ LearnToEarn is a decentralized blockchain-based application designed to encourag
 Contract Address
 
 0xc6BC7A58E304Ac2144afEc045AEfDb67B77713E0
+![image](https://github.com/user-attachments/assets/b4528e4c-b658-4607-a48a-20e238dabb12)
+
 
 Key Features
 
