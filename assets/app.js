@@ -96,6 +96,8 @@
   function updateModeUI() {
     state.mode = el("contractMode").value;
     const isLegacy = state.mode === "legacy";
+    el("v2VerificationWrap").hidden = isLegacy;
+    el("v2Verified").checked = false;
     el("legacyAlert").hidden = !isLegacy;
     el("contractAddress").value = isLegacy ? LEGACY_ADDRESS : "";
     el("contractAddress").placeholder = isLegacy ? "Legacy contract address" : "Paste the deployed V2 address";
@@ -121,7 +123,7 @@
   }
 
   function updateActionButtons() {
-    const enabled = state.mode === "v2" && Boolean(state.signer) && state.codeVerified && Boolean(state.contract);
+    const enabled = state.mode === "v2" && Boolean(state.signer) && state.codeVerified && Boolean(state.contract) && el("v2Verified").checked;
     el("loginButton").disabled = !enabled || state.v2HasClaimedToday;
     el("depositButton").disabled = !enabled;
   }
@@ -236,7 +238,7 @@
       el("nextReward").textContent = state.mode === "legacy" ? "Paused" : formatNative(nextBonus);
       el("rewardHint").textContent = hint;
       updateActionButtons();
-      setMessage("Contract bytecode found. Read-only data loaded from " + networkLabel(state.chainId) + ".", "success");
+      setMessage(state.mode === "v2" ? "Contract bytecode found. Independently verify the source, then tick the acknowledgement to enable V2 writes." : "Contract bytecode found. Legacy V1 is connected in read-only mode.", "success");
     } catch (error) {
       state.codeVerified = false;
       state.contract = null;
@@ -301,6 +303,14 @@
     el("connectButton").addEventListener("click", connectWallet);
     el("refreshButton").addEventListener("click", inspectContract);
     el("contractMode").addEventListener("change", updateModeUI);
+    el("v2Verified").addEventListener("change", updateActionButtons);
+    el("contractAddress").addEventListener("input", () => {
+      state.codeVerified = false;
+      state.contract = null;
+      el("v2Verified").checked = false;
+      el("codeStatus").textContent = "Not checked";
+      updateActionButtons();
+    });
     el("loginButton").addEventListener("click", claimDailyReward);
     el("depositButton").addEventListener("click", fundPool);
     el("menuToggle").addEventListener("click", () => {
