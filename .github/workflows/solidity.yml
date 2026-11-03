@@ -1,0 +1,36 @@
+name: Solidity checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "contracts/**"
+      - "test/**"
+      - "foundry.toml"
+      - ".github/workflows/solidity.yml"
+  pull_request:
+    paths:
+      - "contracts/**"
+      - "test/**"
+      - "foundry.toml"
+      - ".github/workflows/solidity.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Compile and test LearnToEarn V2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Compile contracts
+        run: forge build
+
+      - name: Run contract tests
+        run: forge test -vv

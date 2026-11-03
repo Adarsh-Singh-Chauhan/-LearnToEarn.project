@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07110f">
+  <meta name="description" content="LearnToEarn is an EVM smart-contract project for daily check-ins, consecutive-day streaks and transparent native-token rewards.">
+  <meta property="og:title" content="LearnToEarn — Show up. Stack streaks. Earn on-chain.">
+  <meta property="og:description" content="A Solidity-powered daily streak and reward-pool protocol with a wallet-connected contract dashboard.">
+  <meta property="og:type" content="website">
+  <title>LearnToEarn — Daily Streak Rewards</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="LearnToEarn home">
+      <span class="brand-mark">L<span>2</span>E</span>
+      <span class="brand-name">Learn<span>To</span>Earn</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#roadmap">Roadmap</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-github" href="https://github.com/Adarsh-Singh-Chauhan/-LearnToEarn.project" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+      <button class="button button-small button-primary" id="connectTop">Connect wallet</button>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="top">
+    <section class="hero page-wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse-dot"></span> SMART CONTRACT PROJECT <span class="eyebrow-divider">/</span> EVM READY</div>
+        <h1>SHOW UP.<br><span>STACK STREAKS.</span><br>EARN ON-CHAIN.</h1>
+        <p class="hero-lead">Turn consistent daily check-ins into verifiable on-chain milestones. LearnToEarn pairs a transparent reward pool with streak logic that anyone can inspect.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#dashboard">Explore contract dashboard <span>↘</span></a>
+          <a class="button button-quiet" href="https://github.com/Adarsh-Singh-Chauhan/-LearnToEarn.project" target="_blank" rel="noreferrer">Explore source <span>↗</span></a>
+        </div>
+        <div class="hero-proof">
+          <div><strong>01</strong><span>Daily check-in</span></div>
+          <div><strong>02</strong><span>Streak progression</span></div>
+          <div><strong>03</strong><span>Reward pool</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="hero-glow"></div>
+        <div class="streak-card">
+          <div class="card-topline"><span>YOUR CONSISTENCY</span><span class="mini-live"><i></i> ON-CHAIN READY</span></div>
+          <div class="streak-number">07<span>DAY STREAK</span></div>
+          <div class="streak-week">
+            <div class="day done"><b>M</b><i>✓</i></div><div class="day done"><b>T</b><i>✓</i></div><div class="day done"><b>W</b><i>✓</i></div><div class="day done"><b>T</b><i>✓</i></div><div class="day done"><b>F</b><i>✓</i></div><div class="day today"><b>S</b><i>•</i></div><div class="day"><b>S</b><i>·</i></div>
+          </div>
+          <div class="card-divider"></div>
+          <div class="reward-row"><span>Next milestone reward</span><strong>+ 10 ETH</strong></div>
+          <div class="reward-note">Illustrative UI preview · not a live balance</div>
+        </div>
+        <div class="floating-chip chip-top"><span>✦</span> CONSISTENCY WINS</div>
+        <div class="floating-chip chip-bottom"><span>◈</span> TRANSPARENT BY DESIGN</div>
+      </div>
+    </section>
+
+    <section class="status-strip page-wrap">
+      <div><span class="strip-icon">◉</span><span><b>Legacy V1</b> <small>Read-only inspection</small></span></div>
+      <div><span class="strip-icon">⬡</span><span><b>V2 source</b> <small>Corrected streak logic</small></span></div>
+      <div><span class="strip-icon">⌘</span><span><b>Self-contained tests</b> <small>Foundry test suite</small></span></div>
+      <div><span class="strip-icon">◎</span><span><b>Wallet dashboard</b> <small>Connect on the deploy network</small></span></div>
+    </section>
+
+    <section class="section page-wrap" id="how-it-works">
+      <div class="section-heading">
+        <div><div class="eyebrow">THE IDEA / 01</div><h2>Consistency should <span>compound.</span></h2></div>
+        <p>LearnToEarn makes the daily habit visible, measurable and verifiable—not hidden behind a central database.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-index">01 / CHECK IN</span><div class="feature-icon">◷</div><h3>One claim per day</h3><p>Connect an EVM wallet and submit a daily check-in. V2 uses UTC calendar days to prevent duplicate claims.</p><span class="feature-line"></span></article>
+        <article class="feature-card"><span class="feature-index">02 / BUILD</span><div class="feature-icon">⌁</div><h3>Build your streak</h3><p>Claim on consecutive days to grow the streak. Miss a calendar day and the next successful claim starts again at day one.</p><span class="feature-line"></span></article>
+        <article class="feature-card"><span class="feature-index">03 / EARN</span><div class="feature-icon">✳</div><h3>Earn from a shared pool</h3><p>Rewards are paid in the selected chain's native currency, when the pool is funded and the configured schedule grants a bonus.</p><span class="feature-line"></span></article>
+      </div>
+    </section>
+
+    <section class="section section-problem">
+      <div class="page-wrap problem-layout">
+        <div><div class="eyebrow">WHY IT EXISTS / 02</div><h2>Good habits fade<br>when progress is <span>invisible.</span></h2></div>
+        <div class="problem-copy">
+          <p>Daily learning and skill-building need consistency. Yet many habit systems store progress in a private database, offer little transparency around reward funding and make it hard for participants to verify how incentives are calculated.</p>
+          <div class="solution-callout"><span>THE LEARNTOEARN APPROACH</span><p>Record streak state and reward rules in a smart contract, expose pool balances on-chain, and let users inspect the rules before interacting.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page-wrap" id="dashboard">
+      <div class="section-heading dashboard-heading">
+        <div><div class="eyebrow">CONTRACT CONSOLE / 03</div><h2>Your progress, <span>on-chain.</span></h2></div>
+        <div class="wallet-status"><span class="pulse-dot" id="walletDot"></span><span id="walletStatus">Wallet not connected</span></div>
+      </div>
+
+      <div class="legacy-alert" id="legacyAlert">
+        <div class="alert-symbol">!</div>
+        <div><b>Legacy V1 is read-only in this dashboard.</b><p>The V1 source resets the streak on every eligible repeat login. Its claim button is intentionally paused. Deploy the corrected V2 contract before enabling real claims or funding through this interface.</p></div>
+      </div>
+
+      <div class="console-card">
+        <div class="console-top">
+          <div><span class="console-kicker">LIVE CONTRACT INSPECTOR</span><h3>Wallet & contract connection</h3></div>
+          <button class="button button-outline button-small" id="refreshButton" disabled>↻ Refresh data</button>
+        </div>
+        <div class="connection-form">
+          <label class="field"><span>CONTRACT VERSION</span><select id="contractMode"><option value="legacy">Legacy V1 · read only</option><option value="v2">LearnToEarn V2 · interactive</option></select></label>
+          <label class="field field-address"><span>CONTRACT ADDRESS</span><input id="contractAddress" spellcheck="false" autocomplete="off" value="0xc6BC7A58E304Ac2144afEc045AEfDb67B77713E0" placeholder="Paste deployed contract address"></label>
+          <button class="button button-primary connect-action" id="connectButton">Connect wallet</button>
+        </div>
+        <div class="connection-meta">
+          <span>NETWORK <b id="networkName">Not detected</b></span>
+          <span>CONTRACT CODE <b id="codeStatus">Not checked</b></span>
+          <span>ACCOUNT <b id="accountShort">Not connected</b></span>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><span>POOL BALANCE</span><strong id="poolBalance">—</strong><small>Native currency · on-chain</small></article>
+          <article class="stat-card"><span>YOUR STREAK</span><strong id="userStreak">—</strong><small>Consecutive UTC days</small></article>
+          <article class="stat-card"><span>NEXT REWARD</span><strong id="nextReward">—</strong><small id="rewardHint">Depends on the V2 schedule</small></article>
+          <article class="stat-card"><span>LAST CHECK-IN</span><strong class="stat-date" id="lastClaim">—</strong><small>Read from contract state</small></article>
+        </div>
+        <div class="schedule-panel">
+          <div><span class="console-kicker">REWARD CURVE</span><h3>Configured streak bonuses</h3></div>
+          <div class="reward-chips" id="rewardSchedule"><span class="reward-chip">Connect wallet to read schedule</span></div>
+        </div>
+        <div class="transaction-panel">
+          <div class="transaction-copy"><span class="console-kicker">V2 TRANSACTIONS</span><h3>Check in. Keep building.</h3><p id="transactionHint">Connect to a deployed V2 contract to enable transactions. Legacy V1 write actions are paused.</p></div>
+          <div class="transaction-actions">
+            <button class="button button-primary" id="loginButton" disabled>Claim daily reward <span>↗</span></button>
+            <div class="deposit-control"><input id="depositAmount" type="number" min="0" step="0.001" placeholder="Amount"><button class="button button-outline" id="depositButton" disabled>Fund pool</button></div>
+          </div>
+        </div>
+        <div class="console-message" id="consoleMessage" role="status">Connect your wallet on the network where the contract is deployed. The chain is not specified in the repository, so this console checks the selected wallet network.</div>
+      </div>
+      <p class="dashboard-footnote">No wallet? You can still inspect the source and tests. This dashboard never invents balances: metrics appear only after the connected network returns contract code and state.</p>
+    </section>
+
+    <section class="section architecture-section" id="architecture">
+      <div class="page-wrap">
+        <div class="section-heading">
+          <div><div class="eyebrow">SYSTEM DESIGN / 04</div><h2>Simple flow.<br><span>Verifiable rules.</span></h2></div>
+          <p>The website is a client interface. The Solidity contract is the source of truth for streak state, reward schedule and pool balance.</p>
+        </div>
+        <div class="architecture-flow">
+          <div class="arch-node"><span>01</span><b>Participant</b><small>Daily check-in</small></div><div class="arch-arrow">→</div>
+          <div class="arch-node"><span>02</span><b>Wallet</b><small>Signs a transaction</small></div><div class="arch-arrow">→</div>
+          <div class="arch-node arch-highlight"><span>03</span><b>LearnToEarn V2</b><small>Validates streak + reward</small></div><div class="arch-arrow">→</div>
+          <div class="arch-node"><span>04</span><b>Reward pool</b><small>Native-token payout</small></div>
+        </div>
+        <div class="architecture-note"><span>↳</span> Every state change and reward event is recorded by the selected EVM network. The frontend reads the contract; it does not calculate or store authoritative streaks.</div>
+      </div>
+    </section>
+
+    <section class="section page-wrap" id="roadmap">
+      <div class="section-heading">
+        <div><div class="eyebrow">BUILD PLAN / 05</div><h2>From prototype to <span>protocol.</span></h2></div>
+        <p>V1 remains documented as a legacy deployment. V2 adds corrected rules, tests and an interactive console for a future deployment.</p>
+      </div>
+      <div class="roadmap">
+        <article class="roadmap-item complete"><span class="roadmap-state">SOURCE REVIEWED</span><h3>01 · Review V1 logic</h3><p>Document the streak-reset condition and the open funding behavior.</p></article>
+        <article class="roadmap-item complete"><span class="roadmap-state">SOURCE ADDED</span><h3>02 · Build V2 contract</h3><p>UTC calendar-day streaks, owner-managed rewards and checked payouts.</p></article>
+        <article class="roadmap-item complete"><span class="roadmap-state">TESTS ADDED</span><h3>03 · Automated checks</h3><p>Foundry tests cover consecutive days, missed days, duplicate claims and pool funding.</p></article>
+        <article class="roadmap-item pending"><span class="roadmap-state">NEXT RELEASE</span><h3>04 · Testnet deployment</h3><p>Confirm the target chain, deploy V2, verify the source and configure the console address.</p></article>
+      </div>
+    </section>
+
+    <section class="closing-cta page-wrap">
+      <div><div class="eyebrow">OPEN SOURCE / BUILT TO BE INSPECTED</div><h2>Earn trust before<br><span>you earn rewards.</span></h2></div>
+      <a class="button button-primary" href="https://github.com/Adarsh-Singh-Chauhan/-LearnToEarn.project" target="_blank" rel="noreferrer">Explore repository <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer page-wrap">
+    <a class="brand" href="#top"><span class="brand-mark">L<span>2</span>E</span><span class="brand-name">Learn<span>To</span>Earn</span></a>
+    <p>Built around consistency, transparent rules and verifiable smart contracts.</p>
+    <span>© 2026 · ADARSH SINGH CHAUHAN</span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

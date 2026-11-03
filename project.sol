@@ -1,6 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+// HISTORICAL V1 SOURCE
+// This file is retained to document the original contract design.
+// It contains a streak-reset logic issue and should not be used for a new deployment.
+// See contracts/LearnToEarnV2.sol for the corrected, tested implementation.
+// Existing on-chain deployments are immutable; editing this source does not modify them.
+
 contract LearnToEarn {
 
     // Mapping to track login streaks
