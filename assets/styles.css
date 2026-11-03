@@ -106,6 +106,7 @@ button { cursor: pointer; }
 .wallet-status { display: flex; align-items: center; gap: 10px; color: #9aafa0; font: 10px var(--mono); }
 .wallet-status .pulse-dot { width: 6px; height: 6px; background: #6d8974; box-shadow: none; }
 .wallet-status.connected .pulse-dot { background: var(--lime); box-shadow: 0 0 12px rgba(184,244,107,.8); }
+.legacy-alert[hidden] { display: none; }
 .legacy-alert { display: flex; gap: 15px; padding: 17px 20px; margin-bottom: 17px; border: 1px solid rgba(255,191,102,.25); border-radius: 12px; background: rgba(255,174,71,.055); }
 .alert-symbol { height: 26px; width: 26px; display: grid; place-items: center; border-radius: 50%; color: #ffd091; border: 1px solid rgba(255,191,102,.4); font-weight: 900; flex: 0 0 auto; }
 .legacy-alert b { color: #f4d9ad; font-size: 11px; }

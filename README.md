@@ -108,7 +108,7 @@ The repository includes a responsive static website at the root.
 
 ~~~bash
 git clone https://github.com/Adarsh-Singh-Chauhan/-LearnToEarn.project.git
-cd -LearnToEarn.project
+cd ./-LearnToEarn.project
 python -m http.server 8000
 ~~~
 

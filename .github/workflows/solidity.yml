@@ -1,4 +1,4 @@
-name: Solidity checks
+name: Project checks
 
 on:
   push:
@@ -7,12 +7,16 @@ on:
       - "contracts/**"
       - "test/**"
       - "foundry.toml"
+      - "index.html"
+      - "assets/**"
       - ".github/workflows/solidity.yml"
   pull_request:
     paths:
       - "contracts/**"
       - "test/**"
       - "foundry.toml"
+      - "index.html"
+      - "assets/**"
       - ".github/workflows/solidity.yml"
 
 permissions:
@@ -20,7 +24,7 @@ permissions:
 
 jobs:
   test:
-    name: Compile and test LearnToEarn V2
+    name: Compile, test and validate the website
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -34,3 +38,14 @@ jobs:
 
       - name: Run contract tests
         run: forge test -vv
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate frontend JavaScript
+        run: node --check assets/app.js
+
+      - name: Validate HTML parsing
+        run: python -c "from html.parser import HTMLParser; p=HTMLParser(); p.feed(open('index.html', encoding='utf-8').read()); p.close(); print('index.html parsed successfully')"
