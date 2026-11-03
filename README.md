@@ -6,6 +6,13 @@
 </p>
 
 <p align="center">
+  <a href="https://learn-to-earn-henna.vercel.app/"><img src="https://img.shields.io/badge/LIVE%20WEBSITE-OPEN%20DEMO-b8f46b?style=for-the-badge&labelColor=07110f" alt="Open the live LearnToEarn website"></a>
+  <a href="https://github.com/Adarsh-Singh-Chauhan/-LearnToEarn.project/actions/workflows/solidity.yml"><img src="https://github.com/Adarsh-Singh-Chauhan/-LearnToEarn.project/actions/workflows/solidity.yml/badge.svg" alt="Project checks"></a>
+</p>
+
+**Live website:** https://learn-to-earn-henna.vercel.app/
+
+<p align="center">
   <a href="https://github.com/Adarsh-Singh-Chauhan/-LearnToEarn.project"><img src="https://img.shields.io/badge/PROJECT-LEARNTOEARN-b8f46b?style=for-the-badge&labelColor=07110f" alt="LearnToEarn"></a>
   <img src="https://img.shields.io/badge/SOLIDITY-0.8.24-363636?style=for-the-badge&logo=solidity" alt="Solidity 0.8.24">
   <img src="https://img.shields.io/badge/TESTS-FOUNDRY-8A5CF6?style=for-the-badge" alt="Foundry">
